@@ -38,26 +38,22 @@ FROM `teachers`
 WHERE `phone` IS NULL
 
 9.
-SELECT
-FROM
-WHERE
-GROUP BY
+SELECT COUNT(*) AS `numero_iscritti`, YEAR(`enrolment_date` AS `anno`)
+FROM `students` 
+GROUP BY `anno`
 
 10.
-SELECT
-FROM
-WHERE
-GROUP BY
+SELECT COUNT(*) AS `numero_insegnanti`, `office_address`
+FROM `teachers`
+GROUP BY `office_address`
 
 11.
-SELECT
-FROM
-WHERE
-GROUP BY
+SELECT AVG(`vote`), `exam_id`
+FROM `exam_students`
+GROUP BY `exam_id`
 
 12.
-SELECT
-FROM
-WHERE
-GROUP BY
+SELECT COUNT(*) AS `numero_corsi_laurea`, `department_id`
+FROM `degrees`
+GROUP BY `department_id`
 
