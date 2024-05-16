@@ -57,3 +57,8 @@ SELECT COUNT(*) AS `numero_corsi_laurea`, `department_id`
 FROM `degrees`
 GROUP BY `department_id`
 
+13.
+
+
+
+
