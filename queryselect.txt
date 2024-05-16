@@ -58,6 +58,53 @@ FROM `degrees`
 GROUP BY `department_id`
 
 13.
+SELECT `students`.*
+FROM `students`
+JOIN `degrees` ON `students`.`degree_id` = `degrees`.`degree_id`
+WHERE `degrees`.`degree_name` = 'Economia';
+
+14.
+SELECT `courses`.*
+FROM `courses`
+JOIN `degrees` ON `courses`.`degree_id` = `degrees`.`degree_id`
+JOIN `departments` ON `degrees`.`department_id` = `departments`.`department_id`
+WHERE `degrees`.`degree_level` = 'Magistrale' AND `departments`.`department_name` = 'Neuroscienze';
+
+15.
+SELECT `courses`.*
+FROM `courses`
+JOIN `course_teacher` ON `courses`.`course_id` = `course_teacher`.`course_id`
+WHERE `course_teacher`.`teacher_id` = 44;
+
+16.
+SELECT `students`.*, `departments`.`department_name`
+FROM `students`
+JOIN `degrees` ON `students`.`degree_id` = `degrees`.`degree_id`
+JOIN `departments` ON `degrees`.`department_id` = `departments`.`department_id`
+ORDER BY `students`.`last_name`, `students`.`first_name`;
+
+17.
+SELECT `degrees`.*, `courses`.*, `teachers`.*
+FROM `degrees`
+JOIN `courses` ON `degrees`.`degree_id` = `courses`.`degree_id`
+JOIN `course_teacher` ON `courses`.`course_id` = `course_teacher`.`course_id`
+JOIN `teachers` ON `course_teacher`.`teacher_id` = `teachers`.`teacher_id`;
+
+18.
+SELECT `teachers`.*
+FROM `teachers`
+JOIN `course_teacher` ON `teachers`.`teacher_id` = `course_teacher`.`teacher_id`
+JOIN `courses` ON `course_teacher`.`course_id` = `courses`.`course_id`
+JOIN `degrees` ON `courses`.`degree_id` = `degrees`.`degree_id`
+WHERE `degrees`.`department_id` = 54;
+
+19.
+SELECT `exam_student`.`student_id`, `exam_student`.`exam_id`, COUNT(`exam_student`.`attempt_id`) AS `num_attempts`, MAX(`exam_student`.`grade`) AS `max_grade`
+FROM `exam_student`
+GROUP BY `exam_student`.`student_id`, `exam_student`.`exam_id`
+HAVING MAX(`exam_student`.`grade`) >= 18;
+
+
 
 
 
